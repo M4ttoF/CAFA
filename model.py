@@ -101,8 +101,11 @@ model = tf.keras.Sequential([
     tf.keras.layers.BatchNormalization(input_shape=INPUT_SHAPE), 
     layers.Dropout(rate = 0.3),
     tf.keras.layers.Dense(units=512, activation='relu'),
+    tf.keras.layers.Dropout(0.2),
     tf.keras.layers.Dense(units=512, activation='relu'),
+    tf.keras.layers.Dropout(0.3),
     tf.keras.layers.Dense(units=512, activation='relu'),
+    tf.keras.layers.Dropout(0.3),
     tf.keras.layers.Dense(units=num_of_labels,activation='sigmoid')
 ])
 
@@ -123,9 +126,9 @@ history = model.fit(
     
     validation_split=0.05,
     
-    epochs= 30,
+    epochs= 50,
     callbacks = [early_stopping],
-    verbose = 0,
+    verbose = 1,
 )
 
 # Plotting Loss/Accuracy
